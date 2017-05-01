@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RootNamespace>Utils</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="microsoft.extensions.commandlineutils" Version="1.1.0" />
+    <PackageReference Include="microsoft.extensions.dependencymodel" Version="1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lackluster\Lackluster.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="TestTemplate.html">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestTemplate.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+</Project>
