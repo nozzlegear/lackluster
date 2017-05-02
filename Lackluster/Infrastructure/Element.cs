@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Lackluster.Infrastructure
 {
-    public abstract class Element : BaseObject
+    public abstract class Element<T> : BaseObject where T: Element<T>
     {
         public abstract string TagName { get; }
 
@@ -117,14 +117,14 @@ namespace Lackluster.Infrastructure
             return tagStart + sb.ToString() + tagEnd;
         }
 
-        public Element ClassNames(params string[] classNames)
+        public T ClassNames(params string[] classNames)
         {
             ElementClassNames = classNames;
 
-            return this;
+            return (T) this;
         }
 
-        public Element ClassName(string className)
+        public T ClassName(string className)
         {
             var list = ElementClassNames.ToList();
 
@@ -132,35 +132,35 @@ namespace Lackluster.Infrastructure
 
             ElementClassNames = list;
 
-            return this;
+            return (T) this;
         }
 
-        public Element Id(string id)
+        public T Id(string id)
         {
             ElementId = id;
 
-            return this;
+            return (T) this;
         }
 
-        public Element Children(params Element[] children)
+        public T Children(params BaseObject[] children)
         {
             ElementChildren = children;
 
-            return this;
+            return (T) this;
         }
 
-        public Element Attributes(Dictionary<string, string> attributes)
+        public T Attributes(Dictionary<string, string> attributes)
         {
             ElementAttributes = attributes;
 
-            return this;
+            return (T) this;
         }
 
-        public Element Attribute(string key, string value)
+        public T Attribute(string key, string value)
         {
             ElementAttributes.Set(key, value);
 
-            return this;
+            return (T) this;
         }
     }
 }

@@ -12,131 +12,131 @@ namespace Lackluster.Infrastructure
             return new Html(null, null, null, children);
         }
 
-        protected virtual Element Div(params BaseObject[] children)
+        protected virtual Div Div(params BaseObject[] children)
         {
             return new Div(null, null, null, children);
         }
 
-        protected virtual Element Head(params BaseObject[] children)
+        protected virtual Head Head(params BaseObject[] children)
         {
             return new Head(null, null, null, children);
         }
 
-        protected virtual Element Body(params BaseObject[] children)
+        protected virtual Body Body(params BaseObject[] children)
         {
             return new Body(null, null, null, children);
         }
-        protected virtual Element Section(params BaseObject[] children)
+        protected virtual Section Section(params BaseObject[] children)
         {
             return new Section(null, null, null, children);
         }
 
-        protected virtual Element P(params BaseObject[] children)
+        protected virtual Paragraph P(params BaseObject[] children)
         {
             return new Paragraph(null, null, null, children);
         }
 
-        protected virtual Element P(string text)
+        protected virtual Paragraph P(string text)
         {
             return new Paragraph(children: new Text(text));
         }
 
-        protected virtual Element Link(string relType, string href)
+        protected virtual Link Link(string relType, string href)
         {
             return new Link(relType, href);
         }
 
-        protected virtual Element Meta(string name, string content)
+        protected virtual Meta Meta(string name, string content)
         {
             return new Meta(name, content);
         }
 
-        protected virtual Element Article(params BaseObject[] children)
+        protected virtual Article Article(params BaseObject[] children)
         {
             return new Article(null, null, null, children);
         }
 
-        protected virtual Element A(params BaseObject[] children)
+        protected virtual Anchor A(params BaseObject[] children)
         {
             return new Anchor(null, null, null, children);
         }
 
-        protected virtual Element A(string text, string href)
+        protected virtual Anchor A(string text, string href)
         {
             return new Anchor(children: new Text(text)).Attribute("href", href);
         }
 
-        protected virtual Element H1(params BaseObject[] children)
+        protected virtual H1 H1(params BaseObject[] children)
         {
             return new H1(null, null, null, children);
         }
 
-        protected virtual Element H1(string text)
+        protected virtual H1 H1(string text)
         {
             return new H1(null, null, null, new Text(text));
         }
 
-        protected virtual Element H2(params BaseObject[] children)
+        protected virtual H2 H2(params BaseObject[] children)
         {
             return new H2(null, null, null, children);
         }
 
-        protected virtual Element H2(string text)
+        protected virtual H2 H2(string text)
         {
             return new H2(null, null, null, new Text(text));
         }
 
-        protected virtual Element H3(params BaseObject[] children)
+        protected virtual H3 H3(params BaseObject[] children)
         {
             return new H3(null, null, null, children);
         }
 
-        protected virtual Element H3(string text)
+        protected virtual H3 H3(string text)
         {
             return new H3(null, null, null, new Text(text));
         }
 
-        protected virtual Element H4(params BaseObject[] children)
+        protected virtual H4 H4(params BaseObject[] children)
         {
             return new H4(null, null, null, children);
         }
 
-        protected virtual Element H4(string text)
+        protected virtual H4 H4(string text)
         {
             return new H4(null, null, null, new Text(text));
         }
 
-        protected virtual Element H5(params BaseObject[] children)
+        protected virtual H5 H5(params BaseObject[] children)
         {
             return new H5(null, null, null, children);
         }
 
-        protected virtual Element H5(string text)
+        protected virtual H5 H5(string text)
         {
             return new H5(null, null, null, new Text(text));
         }
 
-        protected virtual Element H6(params BaseObject[] children)
+        protected virtual H6 H6(params BaseObject[] children)
         {
             return new H6(null, null, null, children);
         }
 
-        protected virtual Element H6(string text)
+        protected virtual H6 H6(string text)
         {
             return new H6(null, null, null, new Text(text));
         }
 
-        protected virtual Element Small(params BaseObject[] children)
+        protected virtual Small Small(params BaseObject[] children)
         {
             return new Small(null, null, null, children);
         }
 
-        protected virtual Element Small(string text)
+        protected virtual Small Small(string text)
         {
             return new Small(null, null, null, new Text(text));
         }
 
-        protected virtual Element Text(string text)
+        protected virtual Text Text(string text)
         {
             return new Text(text);
         }

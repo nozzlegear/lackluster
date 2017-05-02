@@ -3,7 +3,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    public class UnorderedList : Element
+    public class UnorderedList : Element<UnorderedList>
     {
         public override string TagName => "ul";
 

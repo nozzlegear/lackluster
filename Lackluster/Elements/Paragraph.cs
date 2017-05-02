@@ -3,7 +3,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    public class Paragraph : Element
+    public class Paragraph : Element<Paragraph>
     {
         public override string TagName => "p";
 

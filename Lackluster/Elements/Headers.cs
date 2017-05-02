@@ -3,7 +3,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    public class H1 : Element
+    public class H1 : Element<H1>
     {
         public override string TagName => "h1";
 
@@ -15,7 +15,7 @@ namespace Lackluster.Elements
         ) : base(id, classNames, attributes, children) { }
     }
 
-    public class H2 : Element
+    public class H2 : Element<H2>
     {
         public override string TagName => "h2";
 
@@ -27,7 +27,7 @@ namespace Lackluster.Elements
         ) : base(id, classNames, attributes, children) { }
     }
 
-    public class H3 : Element
+    public class H3 : Element<H3>
     {
         public override string TagName => "h3";
 
@@ -39,7 +39,7 @@ namespace Lackluster.Elements
         ) : base(id, classNames, attributes, children) { }
     }
 
-    public class H4 : Element
+    public class H4 : Element<H4>
     {
         public override string TagName => "h4";
 
@@ -51,7 +51,7 @@ namespace Lackluster.Elements
         ) : base(id, classNames, attributes, children) { }
     }
 
-    public class H5 : Element
+    public class H5 : Element<H5>
     {
         public override string TagName => "h5";
 
@@ -63,7 +63,7 @@ namespace Lackluster.Elements
         ) : base(id, classNames, attributes, children) { }
     }
 
-    public class H6 : Element
+    public class H6 : Element<H6>
     {
         public override string TagName => "h6";
 
