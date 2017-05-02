@@ -4,13 +4,13 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(true)]
     public class Text : Element<Text>
     {
         public override string TagName => "";
         
         private string TextValue { get; set; }
 
+        [Helper]
         public Text(string text)
         {
             TextValue = text;

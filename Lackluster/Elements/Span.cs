@@ -4,7 +4,6 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(true)]
     public class Span : Element<Span>
     {
         public override string TagName => "span";
@@ -15,5 +14,11 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public Span(params BaseObject[] children) : base(null, null, null, children) { }
+
+        [Helper]
+        public Span(string text) : base(null, null, null, new Text(text)) { }
     }
 }

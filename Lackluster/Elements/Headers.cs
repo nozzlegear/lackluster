@@ -4,7 +4,6 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(true)]
     public class H1 : Element<H1>
     {
         public override string TagName => "h1";
@@ -15,9 +14,14 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public H1(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public H1(string text) : base (null, null, null, new Text(text)) { }
     }
 
-    [ComponentHelper(true)]
     public class H2 : Element<H2>
     {
         public override string TagName => "h2";
@@ -28,9 +32,14 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public H2(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public H2(string text) : base (null, null, null, new Text(text)) { }
     }
 
-    [ComponentHelper(true)]
     public class H3 : Element<H3>
     {
         public override string TagName => "h3";
@@ -41,9 +50,14 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public H3(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public H3(string text) : base (null, null, null, new Text(text)) { }
     }
 
-    [ComponentHelper(true)]
     public class H4 : Element<H4>
     {
         public override string TagName => "h4";
@@ -54,9 +68,14 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public H4(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public H4(string text) : base (null, null, null, new Text(text)) { }
     }
 
-    [ComponentHelper(true)]
     public class H5 : Element<H5>
     {
         public override string TagName => "h5";
@@ -67,9 +86,14 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public H5(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public H5(string text) : base (null, null, null, new Text(text)) { }
     }
 
-    [ComponentHelper(true)]
     public class H6 : Element<H6>
     {
         public override string TagName => "h6";
@@ -80,5 +104,11 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public H6(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public H6(string text) : base (null, null, null, new Text(text)) { }
     }
 }

@@ -4,7 +4,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(true, "a")]
+    [ElementShortName("A")]
     public class Anchor : Element<Anchor>
     {
         public override string TagName => "a";
@@ -15,5 +15,14 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public Anchor(params BaseObject[] children) : base(null, null, null, children) { }
+
+        [Helper]
+        public Anchor(string href, string text)
+        {
+            Attribute("href", href).Children(new Text(text));
+        }
     }
 }

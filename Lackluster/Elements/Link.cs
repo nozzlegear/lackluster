@@ -4,7 +4,6 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper]
     public class Link : Element<Link>
     {
         public override string TagName => "link";
@@ -13,6 +12,7 @@ namespace Lackluster.Elements
 
         private string Href { get; set; }
 
+        [Helper]
         public Link(string relType, string href)
         {
             RelType = relType;

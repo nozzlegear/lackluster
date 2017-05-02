@@ -4,7 +4,6 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(true)]
     public class Small : Element<Small>
     {
         public override string TagName => "small";
@@ -15,5 +14,9 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        public Small(params BaseObject[] children) : base(null, null, null, children) { }
+
+        public Small(string text) : base(null, null, null, new Text(text)) { }
     }
 }

@@ -4,7 +4,6 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper]
     public class Html : Element<Html>
     {
         public override string TagName => "html";
@@ -15,5 +14,8 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public Html(params BaseObject[] children) : base(null, null, null, children) { }
     }
 }

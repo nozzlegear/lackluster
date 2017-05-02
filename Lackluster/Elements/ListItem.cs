@@ -4,7 +4,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(true)]
+    [ElementShortName("Li")]
     public class ListItem : Element<ListItem>
     {
         public override string TagName => "li";
@@ -15,5 +15,11 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public ListItem(params BaseObject[] children) : base (null, null, null, children) { }
+
+        [Helper]
+        public ListItem(string text) : base(null, null, null, new Text(text)) { }
     }
 }

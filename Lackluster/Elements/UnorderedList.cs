@@ -4,7 +4,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper]
+    [ElementShortName("Ul")]
     public class UnorderedList : Element<UnorderedList>
     {
         public override string TagName => "ul";
@@ -15,5 +15,8 @@ namespace Lackluster.Elements
             Dictionary<string, string> attributes = null, 
             params BaseObject[] children
         ) : base(id, classNames, attributes, children) { }
+
+        [Helper]
+        public UnorderedList(params BaseObject[] children) : base(null, null, null, children) { }
     }
 }

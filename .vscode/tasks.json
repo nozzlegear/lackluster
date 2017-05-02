@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}\\Lackluster.Tests\\Lackluster.Tests.csproj"
+                "${workspaceRoot}\\lackluster.sln"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

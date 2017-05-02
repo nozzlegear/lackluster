@@ -4,7 +4,6 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper]
     public class Meta : Element<Meta>
     {
         public override string TagName => "meta";
@@ -13,6 +12,7 @@ namespace Lackluster.Elements
 
         private string Content { get; set; }
 
+        [Helper]
         public Meta(string name, string content)
         {
             Name = name;
