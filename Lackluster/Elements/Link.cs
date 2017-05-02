@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
+using Lackluster.Attributes;
 using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
+    [ComponentHelper]
     public class Link : Element<Link>
     {
         public override string TagName => "link";

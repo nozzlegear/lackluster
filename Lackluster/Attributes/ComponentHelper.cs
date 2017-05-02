@@ -13,13 +13,10 @@ namespace Lackluster.Attributes
 
         public bool HasTextChild { get; }
 
-        public Type TargetType { get; }
-
-        public ComponentHelper(Type targetType, string methodName = null, bool hasTextChild = false)
+        public ComponentHelper(bool hasTextChild = false, string methodName = null)
         {
             MethodName = methodName;
             HasTextChild = hasTextChild;
-            TargetType = targetType;
         }
     }
 }

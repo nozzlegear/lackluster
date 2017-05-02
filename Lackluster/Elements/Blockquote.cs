@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Lackluster.Attributes;
 using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
+    [ComponentHelper(true)]
     public class Blockquote : Element<Blockquote>
     {
         public override string TagName => "blockquote";

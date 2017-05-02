@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Lackluster.Attributes;
 using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
+    [ComponentHelper(true)]
     public class Pre : Element<Pre>
     {
         public override string TagName => "pre";

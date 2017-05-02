@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
+using Lackluster.Attributes;
 using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
+    [ComponentHelper(true)]
     public class Text : Element<Text>
     {
         public override string TagName => "";

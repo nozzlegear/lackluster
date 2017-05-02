@@ -4,7 +4,7 @@ using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
-    [ComponentHelper(typeof(Anchor), "a", true)]
+    [ComponentHelper(true, "a")]
     public class Anchor : Element<Anchor>
     {
         public override string TagName => "a";

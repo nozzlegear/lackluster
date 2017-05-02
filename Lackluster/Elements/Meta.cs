@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
+using Lackluster.Attributes;
 using Lackluster.Infrastructure;
 
 namespace Lackluster.Elements
 {
+    [ComponentHelper]
     public class Meta : Element<Meta>
     {
         public override string TagName => "meta";
