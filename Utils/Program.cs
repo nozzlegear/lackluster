@@ -156,8 +156,16 @@ namespace Utils
             }
 
             Object value = paramInfo.DefaultValue;
-            
-            return " = " + (value?.ToString() ?? "null");
+            string prefix = " = ";
+
+            if (value == null)
+            {
+                return prefix + "null";
+            }
+
+            bool isString = value.GetType() == typeof(string);
+
+            return prefix + (isString ? $"\"{value.ToString()}\"" : value.ToString());
         }
     }
 }
