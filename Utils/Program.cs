@@ -85,7 +85,8 @@ namespace Utils
                                 Type paramType = constructorParam.ParameterType;
                                 string paramTypeName = paramType.FullName;
                                 bool isParamsArray = constructorParam.CustomAttributes.Any(paramAtt => paramAtt.AttributeType == typeof(ParamArrayAttribute));
-                                string typePrefix = isParamsArray ? "params " : string.Empty;
+                                string prefix = isParamsArray ? "params " : string.Empty;
+                                string suffix = GetDefaultValueSuffix(constructorParam);
 
                                 if (paramType.GenericTypeArguments.Count() > 0)
                                 {
@@ -96,7 +97,7 @@ namespace Utils
                                     paramTypeName = $"{withoutTick}<{string.Join(", ", paramType.GenericTypeArguments.Select(arg => arg.FullName))}>";
                                 }
 
-                                constructorParams.Add($"{typePrefix}{paramTypeName} {constructorParam.Name}");
+                                constructorParams.Add($"{prefix}{paramTypeName} {constructorParam.Name}{suffix}");
                                 argNames.Add(constructorParam.Name);
                             }
 
@@ -145,6 +146,18 @@ namespace Utils
             var att = elementInfo.GetCustomAttribute(typeof(ElementShortNameAttribute)) as ElementShortNameAttribute;
 
             return att?.ShortName ?? elementInfo.Name;
+        }
+
+        static string GetDefaultValueSuffix(ParameterInfo paramInfo)
+        {
+            if (! paramInfo.HasDefaultValue)
+            {
+                return string.Empty;
+            }
+
+            Object value = paramInfo.DefaultValue;
+            
+            return " = " + (value?.ToString() ?? "null");
         }
     }
 }
