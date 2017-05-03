@@ -8,21 +8,14 @@ namespace Lackluster.Elements
     {
         public override string TagName => "meta";
 
-        private string Name { get; set; }
-
-        private string Content { get; set; }
-
         [Helper]
         public Meta(string name, string content)
         {
-            Name = name;
-            Content = content;
+            ElementAttributes.ChainSet("name", name).ChainSet("content", content);
         }
         
         public override Task<string> RenderToStaticMarkup()
         {
-            ElementAttributes.ChainSet("name", Name).ChainSet("content", Content);
-
             // Self closing elements never have children, so we won't iterate over them.
             string tag = FormatTagNameWithAttributes(true);
 
