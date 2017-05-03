@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Lackluster.Infrastructure;
 
@@ -31,6 +32,17 @@ namespace Lackluster.Tests
                             ),
                             Div(
                                 P("<a href=\"test\">HTML text is escaped.</a>")
+                            ),
+                            Div(
+                                Img("https://i.imgur.com/ChYwfMq.jpg", "The Senate"),
+                                Ul(
+                                    Enumerable.Range(1, 3).Select(i => Li("Item " + i)).ToArray()
+                                ),
+                                Ol(
+                                    Li("Item 4"),
+                                    Li("Item 5"),
+                                    Li("Item 6")
+                                )
                             ),
                             Div(
                                 new ChildComponent(),
