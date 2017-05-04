@@ -1,0 +1,30 @@
+{
+    // Copy the following snippet into your C# user snippets:
+    "Lackluster Element": {
+		"prefix": "lack-el",
+		"body": [
+			"using System.Collections.Generic;",
+			"using Lackluster.Attributes;",
+			"using Lackluster.Infrastructure;",
+			"",
+			"namespace Lackluster.Elements",
+			"{",
+			"    public class $1 : Element<$1>",
+			"    {",
+			"        public override string TagName => \"$0$1\";",
+			"",
+			"        public $1(",
+			"            string id = null, ",
+			"            IEnumerable<string> classNames = null, ",
+			"            Dictionary<string, string> attributes = null, ",
+			"            params BaseObject[] children",
+			"        ) : base(id, classNames, attributes, children) { }",
+			"",
+			"        [Helper]",
+			"        public $1(params BaseObject[] children) : base(null, null, null, children) { }",
+			"    }",
+			"}"
+		],
+		"description": "Creates a Lackluster element."
+	}
+}
