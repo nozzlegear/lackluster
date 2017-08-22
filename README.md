@@ -1,5 +1,6 @@
 # Lackluster
-Lackluster is an experiment in building a React-like HTML renderer in C#. My goal with Lackluster is to replace all HTML files in a simple static website (my blog) with Lackluster components. 
+
+Lackluster is an experiment in building Electron apps with .NET, and using a React-like HTML renderer. The goal with Lackluster.React is to replace all HTML files in a simple static website (my blog) with Lackluster components. 
 
 Rather than working with Razor view files, React server-side rendering, or other view engines, I should be able to quickly set up Lackluster components and describe each page's markup with C#.
 

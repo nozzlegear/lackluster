@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Lackluster.Infrastructure
 {
-    public abstract class Element<T> : BaseObject where T: Element<T>
+    public abstract class Element<T> : BaseObject where T : Element<T>
     {
         public abstract string TagName { get; }
 
@@ -45,9 +45,9 @@ namespace Lackluster.Infrastructure
 
         private IEnumerable<BaseObject> _ElementChildren { get; set; }
 
-        public virtual IEnumerable<BaseObject> ElementChildren 
-        {  
-            get 
+        public virtual IEnumerable<BaseObject> ElementChildren
+        {
+            get
             {
                 _ElementChildren = _ElementChildren.Guard();
 
@@ -60,9 +60,9 @@ namespace Lackluster.Infrastructure
         }
 
         protected Element(
-            string id = null, 
-            IEnumerable<string> classNames = null, 
-            Dictionary<string, string> attributes = null, 
+            string id = null,
+            IEnumerable<string> classNames = null,
+            Dictionary<string, string> attributes = null,
             params BaseObject[] children
         )
         {
@@ -81,7 +81,7 @@ namespace Lackluster.Infrastructure
                 .Guard()
                 .ChainSet("id", ElementId)
                 .ChainSet("class", string.Join(" ", ElementClassNames.Guard()))
-                .Where(kvp => ! string.IsNullOrEmpty(kvp.Value))
+                .Where(kvp => !string.IsNullOrEmpty(kvp.Value))
                 .Select(kvp => $"{EscapeString(kvp.Key)}=\"{EscapeString(kvp.Value)}\"");
 
             return string.Join(" ", attributes);
@@ -95,7 +95,7 @@ namespace Lackluster.Infrastructure
             string attributes = FormatAttributes();
             string closer = selfClosingTag ? "/" : "";
             string spacer = attributes.Count() == 0 ? "" : " ";
-            
+
             return $"<{TagName}{spacer}{attributes}{closer}>";
         }
 
@@ -121,7 +121,7 @@ namespace Lackluster.Infrastructure
         {
             ElementClassNames = classNames;
 
-            return (T) this;
+            return (T)this;
         }
 
         public T ClassName(string className)
@@ -132,35 +132,40 @@ namespace Lackluster.Infrastructure
 
             ElementClassNames = list;
 
-            return (T) this;
+            return (T)this;
         }
 
         public T Id(string id)
         {
             ElementId = id;
 
-            return (T) this;
+            return (T)this;
         }
 
         public T Children(params BaseObject[] children)
         {
             ElementChildren = children;
 
-            return (T) this;
+            return (T)this;
         }
 
         public T Attributes(Dictionary<string, string> attributes)
         {
             ElementAttributes = attributes;
 
-            return (T) this;
+            return (T)this;
         }
 
         public T Attribute(string key, string value)
         {
             ElementAttributes.Set(key, value);
 
-            return (T) this;
+            return (T)this;
+        }
+
+        public T OnClick(System.Action<int> handler)
+        {
+            return (T)this;
         }
     }
 }
