@@ -90,8 +90,6 @@ function closeWindow(command: InteropCommand) {
 }
 
 function electronReady() {
-    const spawned = cp.spawn("./bin/Debug/netcoreapp1.1/win10-x64/publish/lackluster.exe", [])
-
     function handleCommand(command: InteropCommand) {
         if (!isCommand(command)) {
             console.error("Command is invalid.");
@@ -125,10 +123,6 @@ function electronReady() {
     function sendCommand(command: InteropCommand) {
         electronSocket.send(JSON.stringify(command))
     }
-
-    spawned.stdout.on("data", chunk => {
-        console.log(chunk.toString())
-    })
 
     const electronSocket = new WebSocket("ws://127.0.0.1:12345/electron")
     electronSocket.on("open", () => {
