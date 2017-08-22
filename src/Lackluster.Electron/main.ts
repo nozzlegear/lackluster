@@ -153,6 +153,9 @@ function electronReady() {
             return;
         }
 
+        // TODO: If the message contains a response to one sent by Node to Lackluster, find its
+        // handler and call it.
+
         handleCommand(command)
     })
 

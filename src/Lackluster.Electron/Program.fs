@@ -78,6 +78,8 @@ module Electron =
 
                         do! webSocket.send Text responseBytes true
 
+                    // TODO: Check if the message contained a response to a message sent from Lackluster.
+                    // If so, call its event (or whatever method we end up using to do so.)
                 | (Close, _, _) ->
                     connectionStatusChanged None
 
