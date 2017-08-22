@@ -1,6 +1,5 @@
 ﻿// Learn more about F# at http://fsharp.org
 namespace Lackluster
-
 module Electron =
 
     open Suave
@@ -21,6 +20,7 @@ module Electron =
     open System.Threading
     open Newtonsoft.Json
 
+    open Lackluster.Electron
     open Lackluster.Commands
     open Lackluster.Commands.Helpers
     open Lackluster.Commands.Handlers
@@ -36,18 +36,15 @@ module Electron =
         |> ByteSegment
 
     let socket connectionStatusChanged (webSocket: WebSocket) (context: HttpContext) =
-        let mailbox = MailboxProcessor<InteropCommand>.Start(fun inbox ->
+        let toNodeMailbox = MailboxProcessor<MessageToNode>.Start(fun inbox ->
             let rec messageLoop() = async {
                 let! msg = inbox.Receive()
-
-                Logger.log <| sprintf "Websocket mailbox received command %A" msg
-
                 let responseBytes = msg |> toResponseBytes
                 let! sendResponse = webSocket.send Text responseBytes true
 
                 match sendResponse with
-                | Choice1Of2 x -> Logger.log "Sent command to Electron."
-                | Choice2Of2 x -> Logger.logError <| sprintf "Error sending %A command to Electron." msg.commandType
+                | Choice1Of2 x -> Logger.log "Sent message to Electron."
+                | Choice2Of2 x -> Logger.logError <| sprintf "Error sending %A message to Electron." msg.messageType
 
                 return! messageLoop()
             }
@@ -92,7 +89,7 @@ module Electron =
 
                 | (Ping, _, _) ->
                     do! webSocket.send Pong ([||] |> ByteSegment) true
-                    connectionStatusChanged (Some mailbox)
+                    connectionStatusChanged (Some toNodeMailbox)
                 | _ -> ()
         }
 
@@ -103,12 +100,12 @@ module Electron =
         | true -> failwith "Lackluster has already been started."
         | false -> running <- true
 
-        let mutable socketSendingAgent: MailboxProcessor<InteropCommand> option = None
+        let mutable toNodeMailbox: MailboxProcessor<MessageToNode> option = None
         let serverConfig =
             { defaultConfig with
                 bindings = [HttpBinding.createSimple Protocol.HTTP "127.0.0.1" 12345]
             }
-        let socketServer = socket (fun mb -> socketSendingAgent <- mb)
+        let socketServer = socket (fun mb -> toNodeMailbox <- mb)
         let server : WebPart =
             choose [
                 path "/electron" >=> handShake socketServer
@@ -125,15 +122,15 @@ module Electron =
         let electronProcess = System.Diagnostics.Process.Start(startInfo)
 
         // Don't return until electron has started and connected to lackluster
-        while socketSendingAgent.IsNone do
+        while toNodeMailbox.IsNone do
             ()
 
         let createWindow (windowConfig: WindowConfig) =
-            match socketSendingAgent with
+            match toNodeMailbox with
             | None -> failwith "Electron websocket is not connected, command cannot be sent."
             | Some mb ->
                 let data = Window windowConfig
-                let command = InteropCommand (CommandType.CreateWindow, data)
+                let command = MessageToNode (ToNodeType.CreateWindow, data)
 
                 mb.Post command
                 ElectronWindow (command.id, mb)

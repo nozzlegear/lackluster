@@ -1,6 +1,7 @@
 namespace Lackluster.Commands
 module Handlers =
     open Lackluster.Logger
+    open Lackluster.Electron
 
     let handleLogCommand data =
         log data
@@ -21,8 +22,8 @@ module Handlers =
 
         None
 
-    let handle (command: InteropCommand): InteropCommand option =
-        match (command.commandType, command.data) with
-        | (Log, Data s) -> handleLogCommand s
+    let handle (message: MessageFromNode): MessageToNode option =
+        match (message.messageType, message.data) with
+        | (Log, DataString s) -> handleLogCommand s
         | (Log, x) -> handleLogCommandWithUnknownDataType x
         | (commandType, _) -> handleUnknownCommand commandType

@@ -6,9 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Utils/Logger.fs" />
-    <Compile Include="Commands/Commands.fs" />
-    <Compile Include="Commands/Helpers.fs" />
-    <Compile Include="Commands/Handlers.fs" />
+    <Compile Include="Interop/Enums.fs" />
+    <Compile Include="Interop/Messages.fs" />
+    <Compile Include="Interop/Helpers.fs" />
+    <Compile Include="Interop/Handlers.fs" />
     <Compile Include="Components/Component.fs" />
     <Compile Include="Electron/Window.fs" />
     <Compile Include="Program.fs" />
