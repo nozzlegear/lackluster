@@ -15,7 +15,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="newtonsoft.json" Version="10.0.3" />
+    <PackageReference Include="newtonsoft.json" Version="13.0.1" />
     <PackageReference Include="suave" Version="2.2.1" />
     <PackageReference Include="tinyipc" Version="1.0.1" />
   </ItemGroup>
